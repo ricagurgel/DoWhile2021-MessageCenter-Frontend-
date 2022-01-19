@@ -55,6 +55,7 @@ export function AuthProvider(props: AuthProvider) {
   async function signIn(gitHubCode: string) {
     const response = await api.post<AuthResponse>('authenticate', {
       code: gitHubCode,
+      platform: 'web',
     })
     const { token, user } = response.data;
     localStorage.setItem('@dowhile:token', token)
